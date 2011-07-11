@@ -1,1 +1,12 @@
 Study algorithm, write it by C programming language
+
+git clone https://yuyijq@github.com/yuyijq/algorithms.git
+cd algorithms
+mkdir target
+
+## build
+make
+
+## run tests
+make test
+
