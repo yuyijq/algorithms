@@ -2,24 +2,22 @@
 #include "Common.h"
 
 #define _LIST_H_
-
 typedef int ElementType;
-typedef struct Node *Position;
-typedef struct Node *LinkedList;
+struct ListNode;
+typedef struct ListNode *Position;
+typedef struct ListNode *LinkedList;
 
-LinkedList Create();
+LinkedList CreateList();
 void Append(LinkedList list, ElementType value);
 Position FindPrev(LinkedList list, ElementType value);
 BOOL Delete(LinkedList list, ElementType value);
 int Length(LinkedList list);
 void Print(LinkedList list);
 
-
-struct Node{
+struct ListNode{
 	ElementType Value;
 	Position Next;
 };
-
 #endif
 
 

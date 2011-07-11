@@ -1,15 +1,15 @@
 #include "LinkedList.h"
 
-LinkedList Create()
+LinkedList CreateList()
 {
-	LinkedList list = (LinkedList)malloc(sizeof(struct Node));
+	LinkedList list = (LinkedList)malloc(sizeof(struct ListNode));
 	list->Next = NULL;
 	return list;
 }
 
 void Append(LinkedList list, ElementType value)
 {
-	Position newElement = malloc(sizeof(struct Node));
+	Position newElement = malloc(sizeof(struct ListNode));
 	if(newElement){
 		newElement->Value = value;
 		newElement->Next = NULL;
