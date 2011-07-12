@@ -10,6 +10,7 @@ typedef struct ListNode *LinkedList;
 LinkedList CreateList();
 void Append(LinkedList list, ElementType value);
 Position FindPrev(LinkedList list, ElementType value);
+Position Find(LinkedList list, ElementType value);
 BOOL Delete(LinkedList list, ElementType value);
 int Length(LinkedList list);
 void Print(LinkedList list);

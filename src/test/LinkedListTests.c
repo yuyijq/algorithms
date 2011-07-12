@@ -32,11 +32,45 @@ void test_should_append_node_to_given_list()
 	assert(list->Next->Value == 5);
 }
 
+void test_should_find_prev_node()
+{
+	LinkedList list = CreateList();
+	Append(list, 5);
+	Append(list, 8);
+	
+	assert(FindPrev(list, 8)->Value == 5);
+}
+
+void test_should_delete_given_element()
+{
+	LinkedList list = CreateList();
+	Append(list, 5);
+	Append(list, 8);
+	
+	Delete(list, 5);
+	
+	assert(list->Next->Value == 8);
+}
+
+void test_should_find_given_element()
+{
+	LinkedList list = CreateList();
+	Append(list, 5);
+	Append(list, 8);
+	
+	Position target = Find(list, 5);
+	
+	assert(target == list->Next);
+}
+
 main()
 {
 	test_should_create_empty_list();
 	test_should_return_length_1_given_empty_list();
 	test_should_return_right_length();
 	test_should_append_node_to_given_list();
+	test_should_find_prev_node();
+	test_should_delete_given_element();
+	test_should_find_given_element();
 	printf("tests for LinkedList run successful \n");
 }

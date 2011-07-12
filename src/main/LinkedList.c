@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <assert.h>
 
 LinkedList CreateList()
 {
@@ -9,6 +10,8 @@ LinkedList CreateList()
 
 void Append(LinkedList list, ElementType value)
 {
+	assert(list != NULL);
+	
 	Position newElement = malloc(sizeof(struct ListNode));
 	if(newElement){
 		newElement->Value = value;
@@ -24,6 +27,8 @@ void Append(LinkedList list, ElementType value)
 
 Position FindPrev(LinkedList list, ElementType value)
 {
+	assert(list != NULL);
+	
 	Position current = list;
 	while(current->Next != NULL)
 	{
@@ -34,8 +39,18 @@ Position FindPrev(LinkedList list, ElementType value)
 	return NULL;
 }
 
+Position Find(LinkedList list, ElementType value)
+{
+	Position prev = FindPrev(list, value);
+	if(prev != NULL)
+		return prev->Next;
+	return NULL;
+}
+
 BOOL Delete(LinkedList list, ElementType value)
 {
+	assert(list != NULL);
+	
 	Position target;
 	Position prev = FindPrev(list, value);
 	if(prev != NULL)
@@ -50,6 +65,8 @@ BOOL Delete(LinkedList list, ElementType value)
 
 int Length(LinkedList list)
 {
+	assert(list != NULL);
+	
 	int len = 0;
 	Position current = list;
 	while(current->Next != NULL)
@@ -62,6 +79,8 @@ int Length(LinkedList list)
 
 void Print(LinkedList list)
 {
+	assert(list != NULL);
+	
 	printf("Elements of list: \n");
 	Position current = list;
 	while(current->Next != NULL)
