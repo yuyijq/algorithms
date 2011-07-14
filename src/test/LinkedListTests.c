@@ -63,7 +63,7 @@ void test_should_find_given_element()
 	assert(target == list->Next);
 }
 
-main()
+int main()
 {
 	test_should_create_empty_list();
 	test_should_return_length_1_given_empty_list();
@@ -73,4 +73,5 @@ main()
 	test_should_delete_given_element();
 	test_should_find_given_element();
 	printf("tests for LinkedList run successful \n");
+	return 0;
 }
