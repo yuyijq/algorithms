@@ -10,7 +10,9 @@ typedef struct tree_node *position;
 typedef struct tree_node *binary_search_tree;
 
 binary_search_tree insert(binary_search_tree tree, ElementType value);
-void delete(binary_search_tree tree, ElementType value);
+binary_search_tree delete(binary_search_tree tree, ElementType value);
+void print(binary_search_tree);
+position find_min(binary_search_tree tree);
 #endif
 
 struct tree_node{

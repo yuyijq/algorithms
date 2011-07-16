@@ -83,3 +83,51 @@ binary_search_tree insert(binary_search_tree tree, ElementType value)
 	tree -> height = max(height(tree->left),height(tree->right)) + 1;
 	return tree;	
 }
+
+position find_min(binary_search_tree tree)
+{
+	if(tree == NULL){
+		return NULL;
+	}
+	if(tree->left != NULL){
+		return find_min(tree->left);
+	}else{
+		return tree;
+	}
+}
+
+binary_search_tree delete(binary_search_tree tree, ElementType value)
+{
+	binary_search_tree temp;
+	if(tree == NULL)
+		printf("There is not a node value is %d \n", value);
+	else
+		if(value < tree->value)
+			tree->left = delete(tree->left, value);
+		else if(value > tree->value)
+			tree->right = delete(tree->right, value);
+		else
+			if(tree->left != NULL && tree->right != NULL){
+				temp = find_min(tree->right);
+				tree->value = temp->value;
+				tree->right = delete(tree->right, temp->value);
+			}else{
+				temp = tree;
+				if(tree -> left != NULL)
+					tree = tree->left;
+				else if(tree -> right != NULL)
+					tree = tree->right;
+				else
+					tree = NULL;
+				free(temp);
+			}
+	return tree;
+}
+
+void print(binary_search_tree tree)
+{
+	if(tree == NULL)return;
+	print(tree->left);
+	printf(" %d ", tree->value);
+	print(tree->right);
+}

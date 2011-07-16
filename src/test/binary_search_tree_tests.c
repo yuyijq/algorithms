@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdio.h>
 #include "binary_search_tree.h"
 
 void test_should_insert_element_to_empty_tree()
@@ -100,6 +101,63 @@ void test_should_rotate_right_with_left_insert()
 	assert(tree->right->value == 25);
 }
 
+void test_should_delete_given_node_without_any_child()
+{
+	int data[] = {20,15};
+	binary_search_tree tree = given_init_tree(data, 2);
+	
+	tree = delete(tree, 15);
+	
+	assert(tree->value == 20);
+	assert(tree->left == NULL);
+	assert(tree->right == NULL);
+}
+
+void test_should_delete_given_node_with_left_child()
+{
+	int data[] = {20,15,13,12};
+	binary_search_tree tree = given_init_tree(data, 4);
+	
+	tree = delete(tree, 13);
+	
+	assert(tree->value == 15);
+	assert(tree->left->value == 12);
+}
+
+void test_should_delete_given_node_with_right_child()
+{
+	int data[] = {20,15,22,18};
+	binary_search_tree tree = given_init_tree(data, 4);
+	
+	tree = delete(tree, 15);
+	
+	assert(tree->value == 20);
+	assert(tree->left->value == 18);
+}
+
+void test_should_delete_given_node_has_two_children()
+{
+	int data[] = {20,15,22,13,21,18,16};
+	binary_search_tree tree = given_init_tree(data, 7);
+	
+	tree = delete(tree, 15);
+	
+	assert(tree->value == 20);
+	assert(tree->left->value == 16);
+	assert(tree->left->right->left == NULL);
+}
+
+void test_should_find_min_element()
+{
+	position min;
+	int data[] = {20,15,22,13,21};
+	binary_search_tree tree = given_init_tree(data, 5);
+	
+	min = find_min(tree);
+	
+	assert(min->value == 13);
+}
+
 main()
 {
 	test_should_insert_element_to_empty_tree();
@@ -110,5 +168,10 @@ main()
 	test_should_rotate_left_with_right_insert();
 	test_should_rotate_right_with_right_insert();
 	test_should_rotate_right_with_left_insert();
+	test_should_delete_given_node_without_any_child();
+	test_should_delete_given_node_with_left_child();
+	test_should_delete_given_node_with_right_child();
+	test_should_delete_given_node_has_two_children();
+	test_should_find_min_element();
 	printf("tests for binary search tree are run successful! \n");
 }
